@@ -123,8 +123,13 @@ async function unlock(rawCode, remember) {
 const form = document.querySelector('.unlock');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    // WebCrypto only exists on HTTPS; without it every code would look wrong.
+    if (!window.crypto?.subtle) {
+        form.querySelector('.unlock-insecure').hidden = false;
+        return;
+    }
     const button = form.querySelector('button');
-    const error = form.querySelector('.unlock-error');
+    const error = form.querySelector('.unlock-error:not(.unlock-insecure)');
     button.disabled = true;
     error.hidden = true;
     const ok = await unlock(form.code.value, true);
