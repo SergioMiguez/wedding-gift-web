@@ -13,9 +13,9 @@ function storedLang() {
 
 function initialLang() {
     const param = new URLSearchParams(location.search).get('lang');
-    if (param in STRINGS) return param;
+    if (Object.hasOwn(STRINGS, param)) return param;
     const saved = storedLang();
-    if (saved in STRINGS) return saved;
+    if (Object.hasOwn(STRINGS, saved)) return saved;
     const prefersSpanish = (navigator.languages || [navigator.language || ''])
         .some((l) => l.toLowerCase().startsWith('es'));
     return prefersSpanish ? 'es' : 'en';
