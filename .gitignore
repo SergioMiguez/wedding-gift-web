@@ -1,0 +1,4 @@
+# plaintext bank details, only the encrypted copy in index.html is committed
+secret/
+.claude/
+.playwright-mcp/

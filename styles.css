@@ -1,0 +1,524 @@
+:root {
+    --page: #f6f3ec;
+    --paper: #fdfdfd;
+    --ink: #1c1c1a;
+    --green: #22341a;
+    --gold: #b97819;
+    --gold-soft: #d9b777;
+    --box: #f8f7f3;
+    /* corner art scale: art was cut from a 1198px-wide canvas */
+    --s: 0.62;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    padding: 56px 16px 48px;
+    min-height: 100vh;
+}
+
+html[data-lang="es"] [data-l="en"],
+html[data-lang="en"] [data-l="es"] {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* language switch */
+.lang {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(253, 253, 253, 0.9);
+    border: 1px solid var(--gold-soft);
+    border-radius: 999px;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+}
+
+.lang button {
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    padding: 2px 4px;
+    cursor: pointer;
+    opacity: 0.55;
+}
+
+.lang button[aria-pressed="true"] {
+    opacity: 1;
+    color: var(--green);
+    font-weight: 500;
+}
+
+/* card + frame */
+.card {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 2px 30px rgba(60, 50, 20, 0.08);
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: calc(17px * var(--s)) calc(21px * var(--s)) calc(25px * var(--s));
+    border: 1px solid var(--gold);
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.corner.tl { top: 0; left: 0; width: calc(365px * var(--s)); }
+.corner.tr { top: 0; right: 0; width: calc(318px * var(--s)); }
+.corner.bl { bottom: 0; left: 0; width: calc(385px * var(--s)); }
+.corner.br { bottom: 0; right: 0; width: calc(398px * var(--s)); }
+
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 64px 64px;
+    text-align: center;
+}
+
+/* typography */
+.script {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    color: var(--green);
+    line-height: 1;
+}
+
+h1.script {
+    font-size: 6.2rem;
+    padding: 0 0 4px;
+}
+
+.flourish {
+    display: block;
+    width: 260px;
+    max-width: 60%;
+    height: auto;
+    margin: -14px auto 18px;
+    color: var(--gold);
+}
+
+.caps {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+/* heading text with gold lines either side */
+.rule {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.rule::before,
+.rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+}
+
+/* message */
+.message {
+    max-width: 34em;
+    margin: 0 auto;
+}
+
+.message p + p::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    margin: 12px auto 12px;
+    background: var(--gold);
+}
+
+/* honeymoon / future home */
+.dreams {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: end;
+    gap: 8px;
+    margin: 32px auto 0;
+    max-width: 600px;
+}
+
+.dreams figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.dreams figcaption {
+    margin-top: 8px;
+    letter-spacing: 0.32em;
+    font-size: 0.9rem;
+}
+
+.dreams figcaption::after {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 1px;
+    margin: 8px auto 0;
+    background: var(--gold);
+}
+
+.dreams-divider {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+}
+
+.dreams-divider::before,
+.dreams-divider::after {
+    content: '';
+    width: 1px;
+    flex: 1;
+    max-height: 70px;
+    background: var(--gold);
+}
+
+.dreams-divider svg {
+    width: 22px;
+    height: 22px;
+    margin: 8px 0;
+}
+
+/* swans */
+.swans {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px -24px 26px;
+    color: var(--gold);
+}
+
+.swans::before,
+.swans::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+}
+
+.swans img {
+    width: min(420px, 70%);
+    height: auto;
+}
+
+.swans-heart {
+    position: absolute;
+    left: 50%;
+    top: -14px;
+    width: 14px;
+    height: 14px;
+    transform: translateX(-50%);
+}
+
+/* bank details */
+.bank {
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.bank h2 + .box {
+    margin-top: 8px;
+}
+
+.box + h2 {
+    margin-top: 26px;
+}
+
+.box {
+    background: var(--box);
+    border: 1px solid #b4a58a;
+    padding: 14px 18px;
+    font-size: 1.25rem;
+    line-height: 1.35;
+}
+
+.box .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 8px;
+}
+
+.box .row.name {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+}
+
+.box dd {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.box .value {
+    font-variant-numeric: tabular-nums;
+    user-select: all;
+}
+
+.copy {
+    font: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold-soft);
+    border-radius: 999px;
+    padding: 2px 10px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.copy:hover,
+.copy:focus-visible {
+    background: var(--gold);
+    color: #fff;
+    outline: none;
+}
+
+/* thanks */
+.thanks {
+    margin-top: 34px;
+}
+
+.sprig {
+    width: 64px;
+    height: auto;
+    display: block;
+    margin: 0 auto 4px;
+}
+
+.rule-short {
+    max-width: 380px;
+    margin: 0 auto;
+    font-size: 0.75rem;
+}
+
+.thanks-heart {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: 6px auto 0;
+    color: var(--gold);
+}
+
+.signature {
+    font-size: 3.4rem;
+    margin-top: -2px;
+}
+
+/* copied toast */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 20;
+    transform: translate(-50%, 20px);
+    opacity: 0;
+    padding: 8px 18px;
+    background: var(--green);
+    color: #fff;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (max-width: 640px) {
+    :root {
+        --s: 0.36;
+    }
+
+    body {
+        font-size: 1.08rem;
+        padding: 52px 8px 32px;
+    }
+
+    .content {
+        padding: 34px 22px 120px;
+    }
+
+    h1.script {
+        font-size: 4.4rem;
+    }
+
+    .flourish {
+        margin-top: -8px;
+    }
+
+    .dreams {
+        grid-template-columns: 1fr 26px 1fr;
+        gap: 4px;
+        margin-top: 24px;
+    }
+
+    .dreams figcaption {
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+    }
+
+    .dreams-divider svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .swans {
+        margin: 8px -6px 22px;
+    }
+
+    .swans img {
+        width: 78%;
+    }
+
+    .caps {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+    }
+
+    .rule {
+        gap: 8px;
+    }
+
+    .box {
+        font-size: 1.12rem;
+        padding: 12px 10px;
+    }
+
+    .box .row.name {
+        font-size: 1.22rem;
+    }
+
+    .signature {
+        font-size: 2.8rem;
+    }
+}
+
+/* guest-code gate for the bank details */
+.unlock {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    background: var(--box);
+    border: 1px solid #b4a58a;
+}
+
+.unlock[hidden],
+.unlock-error[hidden],
+.bank-details[hidden] {
+    display: none;
+}
+
+.unlock-text {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.unlock-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.unlock input {
+    flex: 1;
+    min-width: 0;
+    max-width: 220px;
+    font: inherit;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 0.08em;
+    padding: 6px 10px;
+    border: 1px solid var(--gold-soft);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+}
+
+.unlock input:focus {
+    outline: 2px solid var(--gold-soft);
+    outline-offset: 1px;
+}
+
+.unlock-btn {
+    font: inherit;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: var(--gold);
+    color: #fff;
+    cursor: pointer;
+}
+
+.unlock-btn:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.unlock-error {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #9b2c1f;
+}
