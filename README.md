@@ -29,6 +29,7 @@ python3 -m http.server 8080
 
 ## Hosting
 
-GitHub Pages from `main` (root). The repo is public: it only holds the
-encrypted bank details. For the custom domain, add a `CNAME` file containing
-`kanoii.com` and point the domain's DNS at GitHub Pages.
+GitHub Pages from `main` (root), served at https://kanoii.com (`CNAME`). The
+repo is public: it only holds the encrypted bank details. DNS at Namecheap:
+four `A @` records to GitHub Pages (185.199.108-111.153) and `CNAME www` to
+`sergiomiguez.github.io.`
